@@ -29,7 +29,13 @@ diamonds <- diamonds %>% rename(
 ```{r}
 # Do some preliminary investigations & cleaning
 
-
+diamonds %>% 
+  filter(length_mm * width_mm * depth_mm < 1000)%>%
+    ggplot(
+    aes( y = price, x = length_mm * width_mm * depth_mm)
+  )+
+  geom_point()+
+  geom_smooth(method = lm)
 
 
 ```
